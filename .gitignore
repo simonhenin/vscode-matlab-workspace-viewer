@@ -3,3 +3,7 @@ node_modules
 .vscode-test/
 *.vsix
 .DS_Store
+.claude
+.vscode/matlab_workspace.json
+.vscode/export_workspace.m
+test.m

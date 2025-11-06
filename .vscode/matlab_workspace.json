@@ -1,0 +1,29 @@
+{
+  "variables": [
+    {
+      "name": "x",
+      "size": "[1 1]",
+      "class": "double",
+      "value": "5"
+    },
+    {
+      "name": "y",
+      "size": "[1 5]",
+      "class": "double",
+      "value": "[1 2 3 4 5]"
+    },
+    {
+      "name": "name",
+      "size": "[1 4]",
+      "class": "char",
+      "value": "test"
+    },
+    {
+      "name": "data",
+      "size": "[1 1]",
+      "class": "struct",
+      "value": "struct with fields: field1, field2"
+    }
+  ],
+  "timestamp": "2024-11-05T21:00:00"
+}

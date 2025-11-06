@@ -1,0 +1,135 @@
+{
+  "name": "matlab-workspace-viewer",
+  "displayName": "MATLAB Workspace Viewer",
+  "description": "View MATLAB workspace variables in VSCode",
+  "version": "0.1.0",
+  "publisher": "your-publisher-name",
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other",
+    "Visualization"
+  ],
+  "keywords": [
+    "matlab",
+    "workspace",
+    "variables",
+    "viewer"
+  ],
+  "activationEvents": [
+    "onLanguage:matlab"
+  ],
+  "main": "./out/extension.js",
+  "contributes": {
+    "views": {
+      "explorer": [
+        {
+          "id": "matlabWorkspace",
+          "name": "MATLAB Workspace"
+        }
+      ]
+    },
+    "commands": [
+      {
+        "command": "matlabWorkspace.refresh",
+        "title": "Refresh MATLAB Workspace",
+        "icon": "$(refresh)"
+      },
+      {
+        "command": "matlabWorkspace.clearAll",
+        "title": "Clear MATLAB Workspace",
+        "icon": "$(clear-all)"
+      },
+      {
+        "command": "matlabWorkspace.copyValue",
+        "title": "Copy Variable Value"
+      },
+      {
+        "command": "matlabWorkspace.deleteVariable",
+        "title": "Delete Variable",
+        "icon": "$(trash)"
+      },
+      {
+        "command": "matlabWorkspace.createHelperScript",
+        "title": "MATLAB Workspace: Create Helper Script"
+      },
+      {
+        "command": "matlabWorkspace.exportNow",
+        "title": "MATLAB Workspace: Export Now",
+        "icon": "$(cloud-download)"
+      }
+    ],
+    "menus": {
+      "view/title": [
+        {
+          "command": "matlabWorkspace.exportNow",
+          "when": "view == matlabWorkspace",
+          "group": "navigation"
+        },
+        {
+          "command": "matlabWorkspace.refresh",
+          "when": "view == matlabWorkspace",
+          "group": "navigation"
+        },
+        {
+          "command": "matlabWorkspace.clearAll",
+          "when": "view == matlabWorkspace",
+          "group": "navigation"
+        }
+      ],
+      "view/item/context": [
+        {
+          "command": "matlabWorkspace.copyValue",
+          "when": "view == matlabWorkspace",
+          "group": "inline"
+        },
+        {
+          "command": "matlabWorkspace.deleteVariable",
+          "when": "view == matlabWorkspace && viewItem == variable",
+          "group": "inline"
+        }
+      ]
+    },
+    "configuration": {
+      "title": "MATLAB Workspace Viewer",
+      "properties": {
+        "matlabWorkspace.refreshInterval": {
+          "type": "number",
+          "default": 2000,
+          "description": "Auto-refresh interval in milliseconds (0 to disable)"
+        },
+        "matlabWorkspace.maxArrayPreview": {
+          "type": "number",
+          "default": 5,
+          "description": "Maximum number of array elements to show in preview"
+        },
+        "matlabWorkspace.dontShowSetupReminder": {
+          "type": "boolean",
+          "default": false,
+          "description": "Don't show the setup reminder on activation"
+        },
+        "matlabWorkspace.autoSetupOnTerminalOpen": {
+          "type": "boolean",
+          "default": true,
+          "description": "Automatically run setup_auto_export when a MATLAB terminal is opened"
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "lint": "eslint src --ext ts"
+  },
+  "devDependencies": {
+    "@types/node": "^20.x",
+    "@types/vscode": "^1.85.0",
+    "@typescript-eslint/eslint-plugin": "^6.x",
+    "@typescript-eslint/parser": "^6.x",
+    "eslint": "^8.x",
+    "typescript": "^5.3.0"
+  },
+  "dependencies": {}
+}
